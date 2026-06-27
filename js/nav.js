@@ -1,13 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Determinar la ruta relativa al navbar según la ubicación del archivo
+    const isSubfolder = window.location.pathname.includes('/AMP/');
+    const navbarPath = isSubfolder ? '../components/navbar.html' : './components/navbar.html';
+
     // Cargar el navbar
-    fetch('./components/navbar.html')
+    fetch(navbarPath)
         .then(response => response.text())
         .then(data => {
             document.body.insertAdjacentHTML('afterbegin', data);
             initializeNavbar();
             initializeMobileMenu();
             initializeSearchModal();
-            addDynamicStyles();
         })
         .catch(error => console.error('Error loading navbar:', error));
 });
@@ -110,36 +113,4 @@ function initializeSearchModal() {
     });
 }
 
-function addDynamicStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-        
-        .anim {
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .none {
-            display: none;
-        }
-        
-        /* Estilos para el menú móvil */
-        .-translate-x-full {
-            transform: translateX(-100%);
-        }
-        
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        #menu-overlay {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-    `;
-    document.head.appendChild(style);
-}
+// Los estilos dinámicos se han migrado estáticamente a css/style.css para optimizar el rendimiento y CLS

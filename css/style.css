@@ -1,15 +1,41 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 body {
   font-family: 'Inter', sans-serif;
 }
 
-
 .scrollbar-hide {
-    scrollbar-width: none; /* Para Firefox */
-    -ms-overflow-style: none; /* Para IE y Edge */
-  }
+  scrollbar-width: none; /* Para Firefox */
+  -ms-overflow-style: none; /* Para IE y Edge */
+}
   
 .scrollbar-hide::-webkit-scrollbar {
-    display: none; /* Para Chrome, Safari y Opera */
-  }
+  display: none; /* Para Chrome, Safari y Opera */
+}
+
+/* Transición suave para las pestañas y modales */
+.anim {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.none {
+  display: none;
+}
+
+/* Estilos para el menú móvil */
+.-translate-x-full {
+  transform: translateX(-100%);
+}
+
+#mobile-menu {
+  transition: transform 0.3s ease-in-out;
+}
+
+#menu-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
